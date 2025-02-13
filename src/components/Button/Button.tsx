@@ -1,13 +1,19 @@
+import { ReactNode } from 'react';
 import './Button.css';
 
 interface Props {
-  label: string;
+  children: ReactNode;
   parentMethod: () => void;
 }
-export function Button({ label, parentMethod }: Props) {
+// Never do this (Never declare two components in one file, it's only with demonstrative purposes)
+export function RedLabel({ children }: Pick<Props, 'children'>) {
+  return <span className='color-red'>{children}</span>;
+}
+
+export function Button({ parentMethod, children }: Props) {
   return (
     <button className='custom-button' onClick={parentMethod}>
-      {label}
+      {children}
     </button>
   );
 }

@@ -1,26 +1,24 @@
-import { useFetch } from './hooks';
+import { Button, RedLabel } from './components';
 
-const url = 'https://jsonplaceholder.typicode.com/posts';
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
+function handleClick() {
+  alert('They have clicked me!');
+}
+function clicker() {
+  alert('This is a red button');
 }
 
 function App() {
-  const { data, loading, error } = useFetch<Post>(url);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Ups! There was an error</div>;
-  }
-
-  return <div>{JSON.stringify(data)}</div>;
+  // Here we are demonstrating the types and labels that we can send through the children prop and also the composition pattern
+  return (
+    <div style={{ color: 'white' }}>
+      <RedLabel>
+        <Button parentMethod={clicker}>Red Button</Button>
+      </RedLabel>
+      <Button parentMethod={handleClick}>
+        <div>Regular button</div>
+      </Button>
+    </div>
+  );
 }
 
 export default App;
