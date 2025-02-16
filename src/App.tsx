@@ -1,23 +1,20 @@
 import { Button, RedLabel } from './components';
+import { GlobalProvider } from './context/GlobalContext';
 
 function handleClick() {
   alert('They have clicked me!');
 }
-function clicker() {
-  alert('This is a red button');
-}
 
 function App() {
-  // Here we are demonstrating the types and labels that we can send through the children prop and also the composition pattern
   return (
-    <div style={{ color: 'white' }}>
-      <RedLabel>
-        <Button parentMethod={clicker}>Red Button</Button>
-      </RedLabel>
-      <Button parentMethod={handleClick}>
-        <div>Regular button</div>
-      </Button>
-    </div>
+    <GlobalProvider>
+      <div style={{ color: 'white' }}>
+        <RedLabel>{''}</RedLabel>
+        <Button parentMethod={handleClick}>
+          <div>+1 button</div>
+        </Button>
+      </div>
+    </GlobalProvider>
   );
 }
 

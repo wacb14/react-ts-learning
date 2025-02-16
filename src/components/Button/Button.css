@@ -6,4 +6,6 @@
 }
 .color-red {
   color: red;
+  display: block;
+  font-size: xx-large;
 }
