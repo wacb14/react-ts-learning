@@ -1,11 +1,7 @@
-import { CustomForm } from './components';
+import { ShoppingCart } from './components';
 
 function App() {
-  return (
-    <>
-      <CustomForm></CustomForm>
-    </>
-  );
+  return <ShoppingCart />;
 }
 
 export default App;
