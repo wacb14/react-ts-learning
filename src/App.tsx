@@ -1,7 +1,7 @@
-import { BookReader } from './components';
+import { ShoppingCart } from './components';
 
 function App() {
-  return <BookReader />;
+  return <ShoppingCart />;
 }
 
 export default App;
