@@ -1,27 +1,25 @@
-import { Modal } from './components';
-import { useModalContext } from './context';
+import { useApi } from './hooks/useApi';
+import { Character } from './models';
+import { getCharacter } from './services/api.service';
 
 function App() {
-  const { setState } = useModalContext();
+  const { loading, error, data, fetchData } = useApi<Character, number>(
+    getCharacter,
+    { autoFetch: true, params: 1 }
+  );
 
-  function openModal() {
-    setState(true);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Ups there was an error {error.message}</p>;
   }
 
   return (
     <>
-      <Modal>
-        <div>
-          <h1>Modal title</h1>
-          <p>Modal content</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nihil
-            mollitia ad aspernatur accusamus. Ut enim consequuntur possimus
-            mollitia ducimus!
-          </p>
-        </div>
-      </Modal>
-      <button onClick={openModal}>Open Modal</button>
+      {JSON.stringify(data)}
+      <button onClick={() => fetchData(2)}>Get Character</button>
     </>
   );
 }
