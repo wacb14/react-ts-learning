@@ -4,3 +4,6 @@ export * from './BookReader/BookReader.tsx';
 export * from './ShoppingCart/ShoppingCart.tsx';
 export * from './PhoneBook/PhoneBook.tsx';
 export * from './Modal/Modal.tsx';
+export * from './ErrorComponents/UndefinedExample.tsx'
+export * from './ErrorComponents/EffectExample.tsx'
+export * from './ErrorComponents/PromiseExample.tsx'
